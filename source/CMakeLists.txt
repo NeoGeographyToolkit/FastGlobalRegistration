@@ -64,19 +64,3 @@ elseif(UNIX)
 endif(WIN32)
 
 add_subdirectory(FastGlobalRegistration)
-
-
-# Matlab Mex
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/Cmake) # add FindMatlab module
-
-add_definitions(/DMATLAB_MEX_FILE) #define matlab macros
-add_definitions(/DMX_COMPAT_32)
-
-find_package(Matlab REQUIRED)
-
-IF(MATLAB_FOUND)
-    message(STATUS "MATLAB Found, MATLAB MEX will be compiled.")
-    add_subdirectory(Matlab)
-ELSE(MATLAB_FOUND)
-    message(STATUS "MATLAB not found... MEX interface wont be built.")
-ENDIF(MATLAB_FOUND)
